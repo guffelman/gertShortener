@@ -1,0 +1,32 @@
+v1.0
+----
+- Link shortener working, however has no front end api
+
+----
+
+
+v1.5
+----
+- Link shortener now has basic web ui, just a box with a button. Doesn't do anything else.
+
+----
+
+v2.0
+----
+~Wow~ Lots of changes.
+- Link shortener now has more robust UI than before, thanks to bootstrap.
+- Link shortener code now hosted on git.gert.me repository (yes, GertShortener predates git.gert.me)
+- Link shortener now has better routing than before now that I understand Express better.
+
+----
+
+v3.0
+----
+- History button now available. 
+- Popup appears with "Link has been copied to your clipboard", and the shortened link is copied to the clipboard. Javascript is cool.
+
+----
+
+v3.5
+----
+- History button now displays data, thanks to new API route /linkhistory.
