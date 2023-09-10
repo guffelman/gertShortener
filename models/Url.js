@@ -1,27 +1,30 @@
-const mongoose = require('mongoose');
+const { Appwrite } = require('appwrite');
+require('dotenv').config({ path: '../config/.env' });
 
-const UrlSchema = new mongoose.Schema({
-  urlId: {
-    type: String,
-    required: true,
-  },
-  origUrl: {
-    type: String,
-    required: true,
-  },
-  shortUrl: {
-    type: String,
-    required: true,
-  },
-  clicks: {
-    type: Number,
-    required: true,
-    default: 0,
-  },
-  date: {
-    type: String,
-    default: Date.now,
-  },
-});
+const appwrite = new Appwrite();
+appwrite.setEndpoint(process.env.APPWRITE_ENDPOINT).setProject(process.env.APPWRITE_PROJECT_ID).setKey(process.env.APPWRITE_API_KEY);
 
-module.exports = mongoose.model('Url', UrlSchema);
+const UrlSchema = new appwrite.Collection('UrlSchema');
+UrlSchema
+    .setKey('urlId')
+    .addString('origUrl')
+    .addString('shortUrl')
+    .addNumber('clicks')
+    .addDate('date')
+    .setRules({
+        'origUrl': {
+            'required': true,
+        },
+        'shortUrl': {
+            'required': true,
+        },
+        'clicks': {
+            'required': true,
+            'default': 0,
+        },
+        'date': {
+            'default': Date.now,
+        },
+    });
+
+module.exports = appwrite; // export the Appwrite SDK instance

@@ -16,12 +16,6 @@ app.use(Express.static(path.join(__dirname, "/www")))
 app.use('/', require('./routes/index'));
 app.use('/api', require('./routes/urls'));
 
-
-
-
-
-
-
 // Server Setupy
 const PORT = 8087;
 app.listen(PORT, () => {
